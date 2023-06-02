@@ -8,6 +8,9 @@ import re
 # Load environment variables from .env file
 load_dotenv('.env')
 
+# Retrieve the OpenAI API key from the environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
 MAX_INPUT_LENGHT = 12
 def main():
     parser = argparse.ArgumentParser()
@@ -28,9 +31,6 @@ def validate_length(prompt:str) -> bool:
 
 
 def generate_branding_snippet(prompt: str) -> str:
-    # Set your API key from the environment variable
-    openai.api_key = os.getenv("OPEN_API_KEY")
-
     enriched_prompt = f"Generate upbeat branding snippet for {prompt}: "
     print(enriched_prompt)
 
@@ -62,9 +62,6 @@ def generate_branding_snippet(prompt: str) -> str:
 
 
 def generate_keywords(prompt: str) -> List[str]:
-    # Set your API key from the environment variable
-    openai.api_key = os.getenv("OPEN_API_KEY")
-
     enriched_prompt = f"Generate related branding keywords for {prompt}: "
     print(enriched_prompt)
 
