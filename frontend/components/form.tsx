@@ -2,9 +2,24 @@ type FormProps = {
     prompt: string;
     setPrompt: any;
     handleSubmit: any;
+    isLoading: boolean;
+    characters: number;
 };
 
-const Form = ({ prompt, setPrompt, handleSubmit }: FormProps) => {
+const Form = ({
+    prompt,
+    setPrompt,
+    handleSubmit,
+    characters,
+    isLoading,
+}: FormProps) => {
+    const isPromptValid = prompt.length <= characters;
+    const updatePrompt = (text: string) => {
+        if (text.length <= characters) {
+            setPrompt(text);
+        }
+    };
+
     return (
         <>
             <p>
@@ -15,9 +30,17 @@ const Form = ({ prompt, setPrompt, handleSubmit }: FormProps) => {
                 type="text"
                 placeholder="coffe"
                 value={prompt}
-                onChange={(e) => setPrompt(e.currentTarget.value)}
+                onChange={(e) => updatePrompt(e.currentTarget.value)}
             />
-            <button onClick={handleSubmit}>Submit</button>
+            <div>
+                {prompt.length}/{characters}
+            </div>
+            <button
+                onClick={handleSubmit}
+                disabled={isLoading || !isPromptValid}
+            >
+                Submit
+            </button>
         </>
     );
 };
