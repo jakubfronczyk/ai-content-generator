@@ -37,27 +37,42 @@ const Main: React.FC = () => {
         setIsLoading(false);
     };
 
-    return (
-        <>
-            <h1>AI Content Generator</h1>
+    const gradientTextStyle =
+        "text-white text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 font-light w-fit mx-auto";
 
-            {hasResult ? (
-                <Result
-                    prompt={prompt}
-                    snippet={snippet}
-                    keywords={keywords}
-                    handleReset={handleReset}
-                />
-            ) : (
-                <Form
-                    prompt={prompt}
-                    setPrompt={setPrompt}
-                    handleSubmit={handleSubmit}
-                    isLoading={isLoading}
-                    characters={CHARACTER_LIMIT}
-                />
-            )}
-        </>
+    return (
+        <div className="h-screen flex bg-slate-600">
+            <div className="max-w-md m-auto p-2 flex ">
+                <div className="bg-slate-800 p-6 rounded-md text-white">
+                    <div className="text-center my-12">
+                        <h1
+                            className={
+                                gradientTextStyle + " text-3xl font-light"
+                            }
+                        >
+                            AI Content Generator
+                        </h1>
+
+                        {hasResult ? (
+                            <Result
+                                prompt={prompt}
+                                snippet={snippet}
+                                keywords={keywords}
+                                handleReset={handleReset}
+                            />
+                        ) : (
+                            <Form
+                                prompt={prompt}
+                                setPrompt={setPrompt}
+                                handleSubmit={handleSubmit}
+                                isLoading={isLoading}
+                                characters={CHARACTER_LIMIT}
+                            />
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 
