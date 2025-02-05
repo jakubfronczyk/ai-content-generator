@@ -1,5 +1,4 @@
 # AI Content Creator
-[Check out live demo](https://ai-content-generator.netlify.app/)
 ## General info
 
 AI Content Creator is a web application that generates branding snippets and keywords based on a given prompt. It utilizes advanced natural language processing techniques to provide users with creative and engaging suggestions for their brand or marketing campaigns.
